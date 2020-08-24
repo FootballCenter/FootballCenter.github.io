@@ -28,26 +28,26 @@ function requestPermission() {
 
             navigator.serviceWorker.ready.then(() => {
                 if (("PushManager" in window)) {
-                navigator.serviceWorker.getRegistration().then((reg) => {
-                    reg.pushManager.subscribe({
-                        userVisibleOnly: true,
-                        applicationServerKey: urlBase64ToUint8Array("BJG6yZKNsO_o5oYw-YIir59t7KHd-bHZP6HO3t9SAInFj_VmZSMs7DckG-5CK-zscouVehXjExuLF23IbcqNJvc")
-                    }).then(function(subs) {
-                        var endpointSubs = subs.endpoint
-                        var p256dhKey = btoa(String.fromCharCode.apply(
-                            null, new Uint8Array(subs.getKey('p256dh'))));
-                        var authKey = btoa(String.fromCharCode.apply(
-                            null, new Uint8Array(subs.getKey('auth'))));
-                        console.log(`Succeed to Subscribe with endpoint ${endpointSubs}`);
-                        console.log(`Succeed to Subscribe with p256dh key ${p256dhKey}`);
-                        console.log(`Succeed to Subscribe with auth key ${authKey}`);
-                    }).catch(function(err) {
-                        console.log('Cannot do Subscribe', err.message);
-                    })
-                });
-            }
+                    navigator.serviceWorker.getRegistration().then((reg) => {
+                        reg.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: urlBase64ToUint8Array("BJG6yZKNsO_o5oYw-YIir59t7KHd-bHZP6HO3t9SAInFj_VmZSMs7DckG-5CK-zscouVehXjExuLF23IbcqNJvc")
+                        }).then(function(subs) {
+                            var endpointSubs = subs.endpoint
+                            var p256dhKey = btoa(String.fromCharCode.apply(
+                                null, new Uint8Array(subs.getKey('p256dh'))));
+                            var authKey = btoa(String.fromCharCode.apply(
+                                null, new Uint8Array(subs.getKey('auth'))));
+                            console.log(`Succeed to Subscribe with endpoint ${endpointSubs}`);
+                            console.log(`Succeed to Subscribe with p256dh key ${p256dhKey}`);
+                            console.log(`Succeed to Subscribe with auth key ${authKey}`);
+                        }).catch(function(err) {
+                            console.log('Cannot do Subscribe', err.message);
+                        })
+                    });
+                }
             })
-            
+
         });
     }
 }
@@ -65,8 +65,3 @@ function urlBase64ToUint8Array(base64String) {
 
     return outputArray;
 }
-
-// Request API untuk pertama kali
-document.addEventListener("DOMContentLoaded", function() {
-    getTeams();
-});

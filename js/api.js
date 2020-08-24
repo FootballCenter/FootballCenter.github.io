@@ -66,22 +66,18 @@ function showTeamById(data) {
 
     let urlCrest = imgUrl(data.crestUrl);
     let teamHTML = `
-            <div class="card medium hoverable">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="${urlCrest.replace(/^http:\/\//i, 'https://')}" onerror="if(this.src === false) {this.src ='.image/logo-256.png'; this.onerror='';} else {this.src ='./image/logo-256.png'}" alt="${data.name} Logo"/>
+            <div class="card">
+                <div class="card-image">
+                    <img src="${urlCrest.replace(/^http:\/\//i, 'https://')}" onerror="if(this.src === false) {this.src ='.image/logo-256.png'; this.onerror='';} else {this.src ='./image/logo-256.png'}" alt="${data.name} Logo"/>
                 </div>
                 <div class="card-content">
-                    <span class="card-title activator">${data.name}
-                    <i class="material-icons right">more_vert</i></span>
-                    <p>${data.address}, <i>${data.area.name}</i></p>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title">${data.name}
-                    <i class="material-icons right">close</i></span>
+                    <span class="card-title activator">${data.name}</span>
                     <p>Address : ${data.address}, <i>${data.area.name}</i></p>
                     <p>Founded in : ${data.founded}</p>
                     <p>Stadion Venue : ${data.venue}</p>
-                    <p>For more information : <a href="${data.website}">Visit Website ${data.name}</a></p>
+                </div>
+                <div class="card-action hoverable">
+                    <p>For more information : <a class="red-text" href="${data.website}">Visit Website ${data.name}</a></p>
                 </div>
             </div>
     `;
@@ -102,7 +98,7 @@ function getTeams() {
                         console.log("Teams Data: " + data);
                         showTeams(data);
                     })
-                }
+                };
             })
     }
 

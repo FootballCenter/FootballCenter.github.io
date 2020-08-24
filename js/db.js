@@ -9,7 +9,7 @@ const saveForLater = team => {
     return new Promise((resolve, reject) => {
         dbPromised.then(db => {
             const tx = db.transaction("teams", `readwrite`);
-            tx.objectStore("teams").add(team);
+            tx.objectStore("teams").put(team);
             return tx;
         }).then(tx => {
             if (tx.complete) {

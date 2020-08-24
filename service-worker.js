@@ -10,7 +10,7 @@ if (workbox) {
         { url: '/nav.html', revision: '1' },
         { url: '/manifest.json', revision: '1' },
         { url: '/sw-main.js', revision: '1' },
-        { url: '/sw-detail.js', revision: '1' },
+        { url: '/js/detail.js', revision: '1' },
         { url: '/service-worker.js', revision: '1' },
         { url: '/css/style.css', revision: '1' },
         { url: '/css/materialize.min.css', revision: '1' },
@@ -19,7 +19,9 @@ if (workbox) {
         { url: '/js/api.js', revision: '1' },
         { url: '/js/idb.js', revision: '1' },
         { url: '/js/db.js', revision: '1' },
-    ]);
+    ], {
+        ignoreURLParametersMatching: [/.*/]
+    });
 
     workbox.routing.registerRoute(
         /.*(?:png|gif|jpg|jpeg|svg|webp)$/,
